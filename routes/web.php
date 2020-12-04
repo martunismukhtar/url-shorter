@@ -20,22 +20,22 @@ $cur_url = url()->current();
 
 $ex_url = explode('/', $cur_url);
 
-// if(count($ex_url)>3) {
+ if(count($ex_url)>3) {
      
-//     $url = $ex_url[3];
-//     $allow_url = ['home', 'login', 'logout', 'register'];
-//     if (!in_array($url, $allow_url)) {
+     $url = $ex_url[3];
+     $allow_url = ['home', 'login', 'logout', 'register'];
+     if (!in_array($url, $allow_url)) {
   
-//         DB::table('link')
-//             ->where('short_link', 'http://bitly.site/'.$url)
-//             ->update(array('jlh_click_link' => DB::raw('jlh_click_link + 1')));
+         DB::table('link')
+             ->where('short_link', 'http://bitly.site/'.$url)
+             ->update(array('jlh_click_link' => DB::raw('jlh_click_link + 1')));
 
-//         $link = DB::table('link')->select('id', 'long_link')->where('short_link', 'http://bitly.site/'.$url)->first();
+         $link = DB::table('link')->select('id', 'long_link')->where('short_link', 'http://bitly.site/'.$url)->first();
        
-//         return redirect()->to($link->long_link)->send();
+         return redirect()->to($link->long_link)->send();
 
-//     }    
-// }
+     }    
+ }
 
 Auth::routes(['verify' => true ]);
 
